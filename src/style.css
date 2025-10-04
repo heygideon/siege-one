@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --default-font-family: "Playpen Sans Variable", cursive;
+}
+
+@layer base {
+  body,
+  html,
+  #app {
+    @apply h-full;
+  }
+}
+
+@utility bg-parchment {
+  background: url("/parchment-texture.jpg") center/cover no-repeat;
+}
