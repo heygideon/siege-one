@@ -15,6 +15,8 @@ let tickInterval: number;
 
 onMounted(() => {
   tickInterval = window.setInterval(() => {
+    if (document.visibilityState === "hidden") return;
+
     let newCount = count.value;
     let toastIdx = 0;
 
