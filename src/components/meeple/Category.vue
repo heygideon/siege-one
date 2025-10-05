@@ -85,11 +85,11 @@ const setItem = (key: string, item: Item) => {
         :alt="item.label"
         :class="[
           'size-full object-contain',
-          !unlocked.includes(`${name}:${key}`) && 'opacity-75',
+          item.price && !unlocked.includes(`${name}:${key}`) && 'opacity-75',
         ]"
       />
       <div
-        v-if="!unlocked.includes(`${name}:${key}`)"
+        v-if="item.price && !unlocked.includes(`${name}:${key}`)"
         class="absolute -top-1 -right-1 grid size-5 place-items-center rounded-full border border-neutral-200 bg-neutral-100"
       >
         <IconLock class="size-3 text-neutral-600" />
