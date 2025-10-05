@@ -66,98 +66,110 @@ import mouth28 from "~/assets/mouth/28.svg";
 import mouth29 from "~/assets/mouth/29.svg";
 import mouth30 from "~/assets/mouth/30.svg";
 
-type ColourMeta = {
+export type Item = {
   label: string;
   src: string;
+  price?: number;
+};
+export type Category = { price: number; items: Record<string, Item> };
+
+export const colours: Category = {
+  price: 200,
+  items: {
+    blue: {
+      label: "Blue",
+      src: meepleBlue,
+    },
+    cyan: {
+      label: "Cyan",
+      src: meepleCyan,
+    },
+    orange: {
+      label: "Orange",
+      src: meepleOrange,
+    },
+    yellow: {
+      label: "Yellow",
+      src: meepleYellow,
+    },
+  },
 };
 
-export const colours: Record<string, ColourMeta> = {
-  blue: {
-    label: "Blue",
-    src: meepleBlue,
-  },
-  cyan: {
-    label: "Cyan",
-    src: meepleCyan,
-  },
-  orange: {
-    label: "Orange",
-    src: meepleOrange,
-  },
-  yellow: {
-    label: "Yellow",
-    src: meepleYellow,
+export const eyes: Category = {
+  price: 300,
+  items: {
+    "1": { label: "1", src: eyes1 },
+    "2": { label: "2", src: eyes2 },
+    "3": { label: "3", src: eyes3 },
+    "4": { label: "4", src: eyes4 },
+    "5": { label: "5", src: eyes5 },
+    "6": { label: "6", src: eyes6 },
+    "7": { label: "7", src: eyes7 },
+    "8": { label: "8", src: eyes8 },
+    "9": { label: "9", src: eyes9 },
+    "10": { label: "10", src: eyes10 },
+    "11": { label: "11", src: eyes11 },
+    "12": { label: "12", src: eyes12 },
+    "13": { label: "13", src: eyes13 },
+    "14": { label: "14", src: eyes14 },
+    "15": { label: "15", src: eyes15 },
+    "16": { label: "16", src: eyes16 },
+    "17": { label: "17", src: eyes17 },
+    "18": { label: "18", src: eyes18 },
+    "19": { label: "19", src: eyes19 },
+    "20": { label: "20", src: eyes20 },
+    "21": { label: "21", src: eyes21 },
+    "22": { label: "22", src: eyes22 },
+    "23": { label: "23", src: eyes23 },
+    "24": { label: "24", src: eyes24 },
+    "25": { label: "25", src: eyes25 },
+    "26": { label: "26", src: eyes26 },
+    "27": { label: "27", src: eyes27 },
+    "28": { label: "28", src: eyes28 },
+    "29": { label: "29", src: eyes29 },
+    "30": { label: "30", src: eyes30 },
+    "31": { label: "31", src: eyes31 },
   },
 };
 
-type Item = {
-  label: string;
-  src: string;
+export const mouths: Category = {
+  price: 300,
+  items: {
+    "1": { label: "1", src: mouth1 },
+    "2": { label: "2", src: mouth2 },
+    "3": { label: "3", src: mouth3 },
+    "4": { label: "4", src: mouth4 },
+    "5": { label: "5", src: mouth5 },
+    "6": { label: "6", src: mouth6 },
+    "7": { label: "7", src: mouth7 },
+    "8": { label: "8", src: mouth8 },
+    "9": { label: "9", src: mouth9 },
+    "10": { label: "10", src: mouth10 },
+    "11": { label: "11", src: mouth11 },
+    "12": { label: "12", src: mouth12 },
+    "13": { label: "13", src: mouth13 },
+    "14": { label: "14", src: mouth14 },
+    "15": { label: "15", src: mouth15 },
+    "16": { label: "16", src: mouth16 },
+    "17": { label: "17", src: mouth17 },
+    "18": { label: "18", src: mouth18 },
+    "19": { label: "19", src: mouth19 },
+    "20": { label: "20", src: mouth20 },
+    "21": { label: "21", src: mouth21 },
+    "22": { label: "22", src: mouth22 },
+    "23": { label: "23", src: mouth23 },
+    "24": { label: "24", src: mouth24 },
+    "25": { label: "25", src: mouth25 },
+    "26": { label: "26", src: mouth26 },
+    "27": { label: "27", src: mouth27 },
+    "28": { label: "28", src: mouth28 },
+    "29": { label: "29", src: mouth29 },
+    "30": { label: "30", src: mouth30 },
+  },
 };
 
-export const eyes: Record<string, Item> = {
-  "1": { label: "1", src: eyes1 },
-  "2": { label: "2", src: eyes2 },
-  "3": { label: "3", src: eyes3 },
-  "4": { label: "4", src: eyes4 },
-  "5": { label: "5", src: eyes5 },
-  "6": { label: "6", src: eyes6 },
-  "7": { label: "7", src: eyes7 },
-  "8": { label: "8", src: eyes8 },
-  "9": { label: "9", src: eyes9 },
-  "10": { label: "10", src: eyes10 },
-  "11": { label: "11", src: eyes11 },
-  "12": { label: "12", src: eyes12 },
-  "13": { label: "13", src: eyes13 },
-  "14": { label: "14", src: eyes14 },
-  "15": { label: "15", src: eyes15 },
-  "16": { label: "16", src: eyes16 },
-  "17": { label: "17", src: eyes17 },
-  "18": { label: "18", src: eyes18 },
-  "19": { label: "19", src: eyes19 },
-  "20": { label: "20", src: eyes20 },
-  "21": { label: "21", src: eyes21 },
-  "22": { label: "22", src: eyes22 },
-  "23": { label: "23", src: eyes23 },
-  "24": { label: "24", src: eyes24 },
-  "25": { label: "25", src: eyes25 },
-  "26": { label: "26", src: eyes26 },
-  "27": { label: "27", src: eyes27 },
-  "28": { label: "28", src: eyes28 },
-  "29": { label: "29", src: eyes29 },
-  "30": { label: "30", src: eyes30 },
-  "31": { label: "31", src: eyes31 },
-};
-
-export const mouths: Record<string, Item> = {
-  "1": { label: "1", src: mouth1 },
-  "2": { label: "2", src: mouth2 },
-  "3": { label: "3", src: mouth3 },
-  "4": { label: "4", src: mouth4 },
-  "5": { label: "5", src: mouth5 },
-  "6": { label: "6", src: mouth6 },
-  "7": { label: "7", src: mouth7 },
-  "8": { label: "8", src: mouth8 },
-  "9": { label: "9", src: mouth9 },
-  "10": { label: "10", src: mouth10 },
-  "11": { label: "11", src: mouth11 },
-  "12": { label: "12", src: mouth12 },
-  "13": { label: "13", src: mouth13 },
-  "14": { label: "14", src: mouth14 },
-  "15": { label: "15", src: mouth15 },
-  "16": { label: "16", src: mouth16 },
-  "17": { label: "17", src: mouth17 },
-  "18": { label: "18", src: mouth18 },
-  "19": { label: "19", src: mouth19 },
-  "20": { label: "20", src: mouth20 },
-  "21": { label: "21", src: mouth21 },
-  "22": { label: "22", src: mouth22 },
-  "23": { label: "23", src: mouth23 },
-  "24": { label: "24", src: mouth24 },
-  "25": { label: "25", src: mouth25 },
-  "26": { label: "26", src: mouth26 },
-  "27": { label: "27", src: mouth27 },
-  "28": { label: "28", src: mouth28 },
-  "29": { label: "29", src: mouth29 },
-  "30": { label: "30", src: mouth30 },
+export type MeepleState = {
+  colour: string;
+  eyes: string;
+  mouth: string;
 };

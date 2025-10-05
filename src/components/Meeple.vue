@@ -2,17 +2,15 @@
 import { IconEye, IconMoodSmile, IconPalette } from "@tabler/icons-vue";
 import Tab from "./meeple/Tab.vue";
 
-import { provide, ref } from "vue";
-import { colours, eyes, mouths } from "~/lib/meeple";
+import { inject, provide, type Ref, ref } from "vue";
+import { colours, eyes, mouths, type MeepleState } from "~/lib/meeple";
+import Category from "./meeple/Category.vue";
 
-const tab = ref("colour");
+const tab = ref<keyof MeepleState>("colour");
 provide("tab", tab);
 
-const meeple = ref({
-  colour: "blue",
-  eyes: "",
-  mouth: "",
-});
+const meeple = inject<Ref<MeepleState>>("meeple");
+if (!meeple) throw new Error("meeple not provided");
 </script>
 
 <template>
@@ -21,20 +19,20 @@ const meeple = ref({
       class="absolute inset-0 -z-10 rotate-2 rounded-3xl bg-neutral-50/50"
     ></div>
     <img
-      v-if="colours[meeple.colour]"
-      :src="colours[meeple.colour]?.src"
+      v-if="colours.items[meeple.colour]"
+      :src="colours.items[meeple.colour]!.src"
       alt=""
       class="size-full"
     />
     <img
-      v-if="eyes[meeple.eyes]"
-      :src="eyes[meeple.eyes]?.src"
+      v-if="eyes.items[meeple.eyes]"
+      :src="eyes.items[meeple.eyes]!.src"
       alt=""
       class="absolute top-16 left-19 h-3 w-auto translate-x-0.5"
     />
     <img
-      v-if="mouths[meeple.mouth]"
-      :src="mouths[meeple.mouth]?.src"
+      v-if="mouths.items[meeple.mouth]"
+      :src="mouths.items[meeple.mouth]!.src"
       alt=""
       class="absolute top-19 left-21 h-4 w-auto translate-x-0.5"
     />
@@ -42,54 +40,32 @@ const meeple = ref({
 
   <div class="min-h-0 flex-1 rounded-xl bg-white p-1 shadow-md">
     <div
-      class="h-full rounded-lg border-2 border-dashed border-neutral-200 p-6"
+      class="flex h-full flex-col overflow-y-auto rounded-lg border-2 border-dashed border-neutral-200"
     >
-      <div class="flex gap-0.5">
+      <div class="flex flex-none gap-0.5 px-6 pt-6">
         <Tab value="colour" :icon="IconPalette" label="Colour" />
         <Tab value="eyes" :icon="IconEye" label="Eyes" />
-        <Tab value="mouths" :icon="IconMoodSmile" label="Mouth" />
+        <Tab value="mouth" :icon="IconMoodSmile" label="Mouth" />
       </div>
 
-      <div class="mt-4">
-        <div v-if="tab === 'colour'" class="flex flex-wrap gap-2">
-          <button
-            v-for="[key, colour] in Object.entries(colours)"
-            :key="key"
-            @click="meeple.colour = key"
-            :class="[
-              'size-14 flex-none rounded-md border border-neutral-200 bg-neutral-50',
-              meeple.colour === key && 'ring-2 ring-amber-600 ring-offset-1',
-            ]"
-          >
-            <img :src="colour.src" :alt="colour.label" class="size-full" />
-          </button>
+      <div class="relative min-h-0 flex-1">
+        <div class="size-full overflow-y-auto p-6">
+          <Category
+            v-if="tab === 'colour'"
+            name="colour"
+            :category="colours"
+            :pad="false"
+          />
+          <Category v-if="tab === 'eyes'" name="eyes" :category="eyes" />
+          <Category v-if="tab === 'mouth'" name="mouth" :category="mouths" />
         </div>
-        <div v-if="tab === 'eyes'" class="flex flex-wrap gap-2">
-          <button
-            v-for="[key, eyes] in Object.entries(eyes)"
-            :key="key"
-            @click="meeple.eyes = key"
-            :class="[
-              'size-14 flex-none rounded-md border border-neutral-200 bg-neutral-50 px-2',
-              meeple.eyes === key && 'ring-2 ring-amber-600 ring-offset-1',
-            ]"
-          >
-            <img :src="eyes.src" :alt="eyes.label" class="h-auto w-full" />
-          </button>
-        </div>
-        <div v-if="tab === 'mouths'" class="flex flex-wrap gap-2">
-          <button
-            v-for="[key, mouth] in Object.entries(mouths)"
-            :key="key"
-            @click="meeple.mouth = key"
-            :class="[
-              'size-14 flex-none rounded-md border border-neutral-200 bg-neutral-50 px-2',
-              meeple.mouth === key && 'ring-2 ring-amber-600 ring-offset-1',
-            ]"
-          >
-            <img :src="mouth.src" :alt="mouth.label" class="h-auto w-full" />
-          </button>
-        </div>
+
+        <div
+          class="pointer-events-none absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-white"
+        ></div>
+        <div
+          class="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white"
+        ></div>
       </div>
     </div>
   </div>

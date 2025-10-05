@@ -1,12 +1,23 @@
 <script setup lang="ts">
 import { onMounted, provide, ref, watch } from "vue";
 import Count from "./components/clicker/Count.vue";
+import type { MeepleState } from "./lib/meeple";
 
 const count = ref(0);
 provide("count", count);
 
 const currentUpgrades = ref<Record<string, number>>({});
 provide("upgrades", currentUpgrades);
+
+const meeple = ref<MeepleState>({
+  colour: "blue",
+  eyes: "",
+  mouth: "",
+});
+provide("meeple", meeple);
+
+const unlocked = ref<string[]>([]);
+provide("unlocked", unlocked);
 
 onMounted(() => {
   const savedCount = localStorage.getItem("count");
