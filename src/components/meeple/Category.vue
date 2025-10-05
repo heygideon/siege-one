@@ -98,7 +98,7 @@ const setItem = (key: string, item: Item) => {
   </div>
 
   <div
-    v-if="false && !unlocked.includes(name) && category.price"
+    v-if="!unlocked.includes(name) && category.price"
     class="absolute inset-0 flex flex-col items-center bg-white/20 p-8 text-center backdrop-blur-sm"
   >
     <div
