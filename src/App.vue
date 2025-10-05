@@ -1,9 +1,36 @@
 <script setup lang="ts">
-import Meeple from "./components/Meeple.vue";
+import { provide, ref } from "vue";
+import coin from "~/assets/coin.png";
+
+const count = ref(0);
+provide("count", count);
 </script>
 
 <template>
-  <div class="mx-auto max-w-4xl p-8">
-    <Meeple />
+  <div class="mx-auto flex h-full max-w-4xl flex-col p-8">
+    <nav class="mb-8 flex flex-none items-center gap-4">
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-2">
+        <RouterLink
+          to="/"
+          class="text-lg font-semibold text-neutral-500 hover:text-black"
+          active-class="!text-amber-800 underline underline-offset-2 decoration-2"
+        >
+          Clicker
+        </RouterLink>
+        <RouterLink
+          to="/meeple"
+          class="text-lg font-semibold text-neutral-500 hover:text-black"
+          active-class="!text-amber-800 underline underline-offset-2 decoration-2"
+        >
+          Meeple
+        </RouterLink>
+      </div>
+      <div class="flex flex-1 items-center justify-end">
+        <img :src="coin" alt="" class="mr-1.5 h-8 drop-shadow-sm" />
+        <span class="text-xl">{{ count }}</span>
+      </div>
+    </nav>
+    <RouterView />
   </div>
 </template>

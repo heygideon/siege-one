@@ -16,7 +16,7 @@ const meeple = ref({
 </script>
 
 <template>
-  <div class="relative isolate mx-auto size-48">
+  <div class="relative isolate mx-auto mb-8 size-48 flex-none">
     <div
       class="absolute inset-0 -z-10 rotate-2 rounded-3xl bg-neutral-50/50"
     ></div>
@@ -40,8 +40,10 @@ const meeple = ref({
     />
   </div>
 
-  <div class="mt-8 rounded-xl bg-white p-1 shadow-md">
-    <div class="rounded-lg border-2 border-dashed border-neutral-200 p-6">
+  <div class="min-h-0 flex-1 rounded-xl bg-white p-1 shadow-md">
+    <div
+      class="h-full rounded-lg border-2 border-dashed border-neutral-200 p-6"
+    >
       <div class="flex gap-0.5">
         <Tab value="colour" :icon="IconPalette" label="Colour" />
         <Tab value="eyes" :icon="IconEye" label="Eyes" />
