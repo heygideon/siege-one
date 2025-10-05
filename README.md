@@ -9,6 +9,8 @@ It's like Cookie Clicker, but I made it for Hack Club Siege.
 - Spend your coins to decorate your little meeple stick man
 - Download your finished meeple (if you want to!)
 
+![An animated GIF of the game](https://github.com/user-attachments/assets/b42db376-a832-4ba7-832f-f044bb7e3689)
+
 ---
 
 ## Development
