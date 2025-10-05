@@ -26,14 +26,14 @@ watch(count, (newCount) => {
       <div class="flex items-center gap-2">
         <RouterLink
           to="/"
-          class="text-lg font-semibold text-neutral-500 hover:text-black"
+          class="text-lg font-semibold text-black/60 hover:text-black"
           active-class="!text-amber-800 underline underline-offset-2 decoration-2"
         >
           Clicker
         </RouterLink>
         <RouterLink
           to="/meeple"
-          class="text-lg font-semibold text-neutral-500 hover:text-black"
+          class="text-lg font-semibold text-black/60 hover:text-black"
           active-class="!text-amber-800 underline underline-offset-2 decoration-2"
         >
           Meeple
