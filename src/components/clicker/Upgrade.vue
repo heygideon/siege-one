@@ -42,7 +42,7 @@ const purchase = () => {
     <button
       @click="purchase"
       :disabled="!nextLevel || !count || count < nextLevel.cost"
-      class="group relative w-full rounded-t-md border border-neutral-200 bg-neutral-50 p-4 text-left transition hover:border-neutral-300 hover:bg-neutral-200 disabled:border-neutral-200 disabled:bg-neutral-50"
+      class="group relative w-full rounded-t-md border border-neutral-200 bg-neutral-50 p-4 text-left transition hover:border-neutral-300 hover:bg-neutral-200 disabled:border-neutral-200 disabled:bg-neutral-50 disabled:opacity-50"
     >
       <div class="absolute top-2 right-2 flex items-center gap-1">
         <img :src="coin" alt="" class="h-4 w-auto drop-shadow-sm" />
@@ -59,7 +59,7 @@ const purchase = () => {
       <p
         :class="[
           'text-sm font-semibold',
-          !nextLevel && 'group-disabled:line-through group-disabled:opacity-50',
+          !nextLevel && 'group-disabled:line-through',
         ]"
       >
         {{ nextLevel?.name || currentLevel?.name }}
@@ -67,7 +67,7 @@ const purchase = () => {
       <p
         :class="[
           'mt-px text-xs text-neutral-600',
-          !nextLevel && 'group-disabled:line-through group-disabled:opacity-50',
+          !nextLevel && 'group-disabled:line-through',
         ]"
       >
         {{ nextLevel?.description || currentLevel?.description }}
