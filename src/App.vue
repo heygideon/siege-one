@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import { provide, ref } from "vue";
+import { onMounted, provide, ref, watch } from "vue";
 import coin from "~/assets/coin.png";
 
 const count = ref(0);
 provide("count", count);
+
+onMounted(() => {
+  const savedCount = localStorage.getItem("count");
+  if (savedCount) {
+    count.value = parseInt(savedCount, 10);
+  }
+});
+watch(count, (newCount) => {
+  localStorage.setItem("count", newCount.toString());
+});
 </script>
 
 <template>
