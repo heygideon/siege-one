@@ -43,7 +43,9 @@ onMounted(() => {
       const currentLevel = levels[level - 1];
       if (!currentLevel) return;
 
-      newCount = currentLevel.tick(newCount);
+      if (currentLevel.tick) {
+        newCount = currentLevel.tick(newCount);
+      }
 
       if (Math.floor(oldCount) !== Math.floor(newCount)) {
         const coinsEl = toastRef.value;

@@ -3,7 +3,7 @@ type Upgrade = {
   description: string;
   activeDescription: string;
   cost: number;
-  tick: (v: number) => number;
+  tick?: (v: number) => number;
 };
 
 const cursorUpgrades: Upgrade[] = [
@@ -24,16 +24,16 @@ const cursorUpgrades: Upgrade[] = [
   {
     name: "Cursor 3",
     description: "clicks even more so you don't have to",
-    activeDescription: "+0.4 clicks/sec",
+    activeDescription: "+0.5 clicks/sec",
     cost: 30,
-    tick: (v: number) => v + 0.4,
+    tick: (v: number) => v + 0.5,
   },
   {
     name: "Cursor 4",
     description: "clicks even morer so you don't have to",
-    activeDescription: "+0.8 clicks/sec",
+    activeDescription: "+1 clicks/sec",
     cost: 40,
-    tick: (v: number) => v + 0.8,
+    tick: (v: number) => v + 1,
   },
   {
     name: "Cursor 4",
@@ -84,7 +84,7 @@ const orchardUpgrades: Upgrade[] = [
 
 const bankUpgrades: Upgrade[] = [
   {
-    name: "Bank 1",
+    name: "Bank",
     description: "the rich get richer",
     activeDescription: "1% interest every 10s",
     cost: 900,
@@ -117,8 +117,30 @@ const bankUpgrades: Upgrade[] = [
   },
 ];
 
+const mouseUpgrades: Upgrade[] = [
+  {
+    name: "Better mouse",
+    description: "clicks harder",
+    activeDescription: "2 coins/click",
+    cost: 150,
+  },
+  {
+    name: "Double clicker",
+    description: "clicks harderer",
+    activeDescription: "4 coins/click",
+    cost: 300,
+  },
+  {
+    name: "Drag click",
+    description: "clicks hardererer",
+    activeDescription: "8 coins/click",
+    cost: 600,
+  },
+];
+
 export const upgrades: Record<string, Upgrade[]> = {
   cursor: cursorUpgrades,
   orchard: orchardUpgrades,
   bank: bankUpgrades,
+  mouse: mouseUpgrades,
 };

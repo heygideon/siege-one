@@ -4,13 +4,18 @@ import coin from "~/assets/coin.png";
 import Upgrade from "./clicker/Upgrade.vue";
 
 const count = inject<Ref<number>>("count");
+const upgrades = inject<Ref<Record<string, number>>>("upgrades");
+
+if (!count) throw new Error("count not provided");
+if (!upgrades) throw new Error("upgrades not provided");
 
 const click = async (ev: MouseEvent) => {
-  if (!count) return;
-  count.value++;
+  const exponent = upgrades.value.mouse || 0;
+  const inc = 2 ** exponent;
+  count.value += inc;
 
   const span = document.createElement("span");
-  span.textContent = "+1";
+  span.textContent = `+${inc}`;
   span.className = "button-click-span";
   span.style.top = ev.clientY + "px";
   span.style.left = ev.clientX + "px";
@@ -44,6 +49,7 @@ const click = async (ev: MouseEvent) => {
     >
       <div class="grid grid-cols-2 gap-3">
         <Upgrade name="cursor" />
+        <Upgrade name="mouse" />
         <Upgrade name="orchard" />
         <Upgrade name="bank" />
       </div>
