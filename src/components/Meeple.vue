@@ -102,6 +102,30 @@ const thing = (key: string) => things.items[key]!;
           <Category v-if="tab === 'eyes'" name="eyes" :category="eyes" />
           <Category v-if="tab === 'mouth'" name="mouth" :category="mouths" />
           <Category v-if="tab === 'things'" name="things" :category="things" />
+
+          <div class="mt-6 space-y-3 text-xs text-neutral-600">
+            <p v-if="tab === 'things'">Drag accessories to reposition them!</p>
+            <p v-if="tab === 'things'">
+              Icons by
+              <a
+                href="https://icons8.com/icons/all--style-doodle"
+                target="_blank"
+                class="underline-offset-2 hover:text-green-700 hover:underline"
+                >Icons8</a
+              >
+              💚
+            </p>
+            <p v-if="tab === 'eyes' || tab === 'mouth'">
+              Face expressions by
+              <a
+                href="https://heyzoish.gumroad.com/l/notionists"
+                target="_blank"
+                class="underline-offset-2 hover:text-black hover:underline"
+                >heyzoish</a
+              >
+              🖤
+            </p>
+          </div>
         </div>
 
         <div
