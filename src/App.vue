@@ -33,9 +33,9 @@ watch(count, (newCount) => {
 
 <template>
   <div class="mx-auto flex h-full max-w-4xl flex-col p-8">
-    <nav class="mb-8 flex flex-none items-center gap-4">
+    <nav class="mb-8 flex flex-none items-center gap-8">
       <div class="flex-1"></div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-3">
         <RouterLink
           to="/"
           class="text-lg font-semibold text-black/60 hover:text-black"
