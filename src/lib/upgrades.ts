@@ -77,8 +77,15 @@ const orchardUpgrades: Upgrade[] = [
     name: "Orchard 5",
     description: "too many trees",
     activeDescription: "+12 coins/sec",
-    cost: 550,
+    cost: 650,
     tick: (v: number) => v + 12,
+  },
+  {
+    name: "Orchard 5",
+    description: "an entire forest",
+    activeDescription: "+20 coins/sec",
+    cost: 900,
+    tick: (v: number) => v + 20,
   },
 ];
 
@@ -86,34 +93,34 @@ const bankUpgrades: Upgrade[] = [
   {
     name: "Bank",
     description: "the rich get richer",
-    activeDescription: "1% interest every 10s",
-    cost: 900,
-    // 1.05^(1/10) ≈ 1.0049
-    tick: (v: number) => v * 1.001,
+    activeDescription: "2% interest every 10s",
+    cost: 500,
+    // 1.02^(1/10) ≈ 1.002
+    tick: (v: number) => v * 1.002,
   },
   {
     name: "Bank 2",
     description: "the rich get even richer",
-    activeDescription: "2% interest every 10s",
-    cost: 1200,
-    // 1.01^(1/10) ≈ 1.002
-    tick: (v: number) => v * 1.002,
+    activeDescription: "5% interest every 10s",
+    cost: 800,
+    // 1.05^(1/10) ≈ 1.0049
+    tick: (v: number) => v * 1.005,
   },
   {
     name: "Bank 3",
     description: "the rich get even richerer",
-    activeDescription: "5% interest every 10s",
-    cost: 1500,
-    // 1.05^(1/10) ≈ 1.0049
-    tick: (v: number) => v * 1.0049,
+    activeDescription: "10% interest every 10s",
+    cost: 1100,
+    // 1.1^(1/10) ≈ 1.0096
+    tick: (v: number) => v * 1.0096,
   },
   {
     name: "Bank 4",
     description: "the rich get even richererer",
-    activeDescription: "8% interest every 10s",
-    cost: 1900,
-    // 1.08^(1/10) ≈ 1.0077
-    tick: (v: number) => v * 1.0077,
+    activeDescription: "15% interest every 10s",
+    cost: 1500,
+    // 1.15^(1/10) ≈ 1.0141
+    tick: (v: number) => v * 1.0141,
   },
 ];
 
