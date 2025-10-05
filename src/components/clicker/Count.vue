@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import coin from "~/assets/coin.png";
-import { inject, onMounted, onUnmounted, useTemplateRef, type Ref } from "vue";
+import {
+  inject,
+  onMounted,
+  onUnmounted,
+  ref,
+  useTemplateRef,
+  type Ref,
+} from "vue";
 import { upgrades as upgradesList } from "~/lib/upgrades";
 
 const count = inject<Ref<number>>("count");
@@ -10,12 +17,20 @@ if (!count) throw new Error("No count provided");
 if (!currentUpgrades) throw new Error("No upgrades provided");
 
 const toastRef = useTemplateRef("count-toast");
+const isBlurred = ref(false);
 
 let tickInterval: number;
 
 onMounted(() => {
+  window.addEventListener("focus", () => {
+    isBlurred.value = false;
+  });
+  window.addEventListener("blur", () => {
+    isBlurred.value = true;
+  });
+
   tickInterval = window.setInterval(() => {
-    if (document.visibilityState === "hidden") return;
+    if (!document.hasFocus()) return;
 
     let newCount = count.value;
     let toastIdx = 0;
@@ -59,7 +74,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative flex gap-1.5">
+  <div
+    :class="[
+      'relative flex gap-1.5 transition-opacity',
+      isBlurred && 'opacity-50',
+    ]"
+  >
     <img :src="coin" alt="" class="h-8 drop-shadow-sm" />
     <span class="text-xl">{{ Math.floor(count) }}</span>
 
