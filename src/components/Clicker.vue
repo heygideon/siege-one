@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { inject, type Ref } from "vue";
 import coin from "~/assets/coin.png";
+import Upgrade from "./clicker/Upgrade.vue";
 
 const count = inject<Ref<number>>("count");
 
@@ -35,6 +36,17 @@ const click = async (ev: MouseEvent) => {
           class="pointer-events-none w-32 drop-shadow-sm transition group-hover:scale-125 group-hover:drop-shadow-md group-active:scale-100"
         />
       </button>
+    </div>
+  </div>
+  <div class="mt-8 flex-none rounded-xl bg-white p-1 shadow-md">
+    <div
+      class="h-full rounded-lg border-2 border-dashed border-neutral-200 p-6"
+    >
+      <div class="grid grid-cols-2 gap-3">
+        <Upgrade name="cursor" />
+        <Upgrade name="orchard" />
+        <Upgrade name="bank" />
+      </div>
     </div>
   </div>
 </template>

@@ -5,6 +5,9 @@ import coin from "~/assets/coin.png";
 const count = ref(0);
 provide("count", count);
 
+const upgrades = ref({});
+provide("upgrades", upgrades);
+
 onMounted(() => {
   const savedCount = localStorage.getItem("count");
   if (savedCount) {
