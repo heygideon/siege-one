@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, provide, ref, watch } from "vue";
+import { onMounted, onUnmounted, provide, ref, watch } from "vue";
 import coin from "~/assets/coin.png";
 import { upgrades } from "./lib/upgrades";
 
@@ -14,7 +14,7 @@ let tickInterval: number;
 onMounted(() => {
   const savedCount = localStorage.getItem("count");
   if (savedCount) {
-    count.value = parseInt(savedCount, 10);
+    count.value = Number(savedCount);
   }
 
   tickInterval = window.setInterval(() => {
@@ -31,8 +31,12 @@ onMounted(() => {
     count.value = newCount;
   }, 1000);
 });
+onUnmounted(() => {
+  clearInterval(tickInterval);
+});
+
 watch(count, (newCount) => {
-  localStorage.setItem("count", newCount.toString());
+  localStorage.setItem("count", newCount.toFixed(1));
 });
 </script>
 
