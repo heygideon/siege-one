@@ -146,8 +146,7 @@ const setItem = (key: string, item: Item) => {
           />
         </div>
         <DialogTitle class="mt-4 text-xl font-semibold">
-          Buy {{ dialogItem?.item.label }} {{ dialogItem?.item.price }}
-          {{ count }}
+          Buy {{ dialogItem?.item.label }}
         </DialogTitle>
 
         <button
