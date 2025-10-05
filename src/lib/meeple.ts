@@ -202,7 +202,7 @@ export const things: Category<ThingItem> = {
     crown: {
       label: "Crown",
       src: crown,
-      price: 300,
+      price: 200,
       _thing: {
         x: 84,
         y: 26,
@@ -213,7 +213,7 @@ export const things: Category<ThingItem> = {
     partyHat: {
       label: "Party Hat",
       src: partyHat,
-      price: 300,
+      price: 200,
       _thing: {
         x: 82,
         y: 28,
@@ -224,7 +224,7 @@ export const things: Category<ThingItem> = {
     santaHat: {
       label: "Santa Hat",
       src: santaHat,
-      price: 300,
+      price: 200,
       _thing: {
         x: 84,
         y: 28,
@@ -235,7 +235,7 @@ export const things: Category<ThingItem> = {
     partyBalloons: {
       label: "Party Balloons",
       src: partyBalloons,
-      price: 300,
+      price: 200,
       _thing: {
         x: 116,
         y: 74,
@@ -246,7 +246,7 @@ export const things: Category<ThingItem> = {
     party: {
       label: "Disco",
       src: party,
-      price: 300,
+      price: 200,
       _thing: {
         x: 84,
         y: 0,
@@ -257,7 +257,7 @@ export const things: Category<ThingItem> = {
     headphones: {
       label: "Headphones",
       src: headphones,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 124,
@@ -267,7 +267,7 @@ export const things: Category<ThingItem> = {
     book: {
       label: "Book",
       src: book,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 124,
@@ -277,7 +277,7 @@ export const things: Category<ThingItem> = {
     piano: {
       label: "Piano",
       src: piano,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 124,
@@ -287,7 +287,7 @@ export const things: Category<ThingItem> = {
     drum: {
       label: "Drum",
       src: drum,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 124,
@@ -297,7 +297,7 @@ export const things: Category<ThingItem> = {
     planet: {
       label: "Planet",
       src: planet,
-      price: 300,
+      price: 200,
       _thing: {
         x: 114,
         y: 76,
@@ -308,7 +308,7 @@ export const things: Category<ThingItem> = {
     camera: {
       label: "Camera",
       src: camera,
-      price: 300,
+      price: 200,
       _thing: {
         x: 48,
         y: 80,
@@ -319,7 +319,7 @@ export const things: Category<ThingItem> = {
     minecraftSword: {
       label: "Minecraft Sword",
       src: minecraftSword,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 76,
@@ -330,7 +330,7 @@ export const things: Category<ThingItem> = {
     football: {
       label: "Football",
       src: football,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 124,
@@ -340,7 +340,7 @@ export const things: Category<ThingItem> = {
     americanFootball: {
       label: "American Football",
       src: americanFootball,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 124,
@@ -350,7 +350,7 @@ export const things: Category<ThingItem> = {
     basketball: {
       label: "Basketball",
       src: basketball,
-      price: 300,
+      price: 200,
       _thing: {
         x: 124,
         y: 124,
@@ -360,7 +360,7 @@ export const things: Category<ThingItem> = {
     beach: {
       label: "Beach",
       src: beach,
-      price: 300,
+      price: 200,
       _thing: {
         x: 24,
         y: 120,
@@ -370,7 +370,7 @@ export const things: Category<ThingItem> = {
     beachUmbrella: {
       label: "Beach Umbrella",
       src: beachUmbrella,
-      price: 300,
+      price: 200,
       _thing: {
         x: 24,
         y: 120,
@@ -380,7 +380,7 @@ export const things: Category<ThingItem> = {
     sun: {
       label: "Sun",
       src: sun,
-      price: 300,
+      price: 200,
       _thing: {
         x: 16,
         y: 16,
@@ -390,7 +390,7 @@ export const things: Category<ThingItem> = {
     star: {
       label: "Star",
       src: star,
-      price: 300,
+      price: 200,
       _thing: {
         x: 16,
         y: 16,
