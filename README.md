@@ -20,3 +20,14 @@ pnpm install
 # and then:
 pnpm dev
 ```
+
+## Inspiration
+
+I just wanted to make something fun, that's all :)
+
+## Credits
+
+- [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/) (obviously)
+- Made with [Vue](https://vuejs.org/), [Vite](https://vite.dev/) and [Tailwind CSS](https://tailwindcss.com/)
+- Icons from [Tabler Icons](https://tabler.io/icons)
+- Artwork from [Siege itself ❤️](https://siege.hackclub.com/), [Icons8](https://icons8.com/icons/all--style-doodle) and [Notionists by heyzoish](https://heyzoish.gumroad.com/l/notionists)
