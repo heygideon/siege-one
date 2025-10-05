@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, ref, type Ref } from "vue";
+import { inject, type Ref } from "vue";
 import coin from "~/assets/coin.png";
 import Upgrade from "./clicker/Upgrade.vue";
 import { useStorage } from "@vueuse/core";
