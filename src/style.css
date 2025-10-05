@@ -2,6 +2,8 @@
 
 @theme {
   --default-font-family: "Playpen Sans Variable", cursive;
+
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 @layer base {
