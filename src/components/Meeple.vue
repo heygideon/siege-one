@@ -7,19 +7,18 @@ import {
 } from "@tabler/icons-vue";
 import Tab from "./meeple/Tab.vue";
 
-import { computed, inject, provide, type Ref, ref } from "vue";
+import { computed, inject, provide, type Ref, ref, useTemplateRef } from "vue";
 import { colours, eyes, mouths, things, type MeepleState } from "~/lib/meeple";
 import Category from "./meeple/Category.vue";
-
-const tab = ref<keyof MeepleState>("colour");
-provide("tab", tab);
+import { UseDraggable } from "@vueuse/components";
 
 const meeple = inject<Ref<MeepleState>>("meeple");
 if (!meeple) throw new Error("meeple not provided");
 
-const meepleThings = computed(() => {
-  return meeple.value.things.split(",").filter(Boolean);
-});
+const tab = ref<keyof MeepleState>("colour");
+provide("tab", tab);
+
+const container = useTemplateRef("meeple-container");
 
 const colour = (key: string) => colours.items[key]!;
 const eye = (key: string) => eyes.items[key]!;
@@ -28,37 +27,54 @@ const thing = (key: string) => things.items[key]!;
 </script>
 
 <template>
-  <div class="relative isolate mx-auto mb-8 size-48 flex-none">
+  <div
+    ref="meeple-container"
+    class="relative isolate mx-auto mb-8 size-48 flex-none"
+  >
     <div
       class="absolute inset-0 -z-10 rotate-2 rounded-3xl bg-neutral-50/50"
     ></div>
-    <img :src="colour(meeple.colour).src" alt="" class="size-full" />
+    <img :src="colour(meeple.colour[0].key).src" alt="" class="size-full" />
     <img
-      v-if="meeple.eyes"
-      :src="eye(meeple.eyes).src"
+      v-if="meeple.eyes[0].key"
+      :src="eye(meeple.eyes[0].key).src"
       alt=""
       class="absolute top-16 left-19 h-3 w-auto translate-x-0.5"
     />
     <img
-      v-if="meeple.mouth"
-      :src="mouth(meeple.mouth).src"
+      v-if="meeple.mouth[0].key"
+      :src="mouth(meeple.mouth[0].key).src"
       alt=""
       class="absolute top-19 left-21 h-4 w-auto translate-x-0.5"
     />
-    <img
-      v-for="t in meepleThings"
-      :key="t"
-      :src="thing(t).src"
-      alt=""
-      class="absolute w-auto translate-x-0.5"
-      :style="{
-        top: `${thing(t)._thing.y}px`,
-        left: `${thing(t)._thing.x}px`,
-        width: `${thing(t)._thing.w}px`,
-        height: `${thing(t)._thing.h || thing(t)._thing.w}px`,
-        rotate: `${thing(t)._thing.rotate}deg`,
+    <UseDraggable
+      v-for="t in meeple.things"
+      :key="t.key"
+      :containerElement="container"
+      :preventDefault="true"
+      :initialValue="{
+        x: t.x || thing(t.key)._thing.x,
+        y: t.y || thing(t.key)._thing.y,
       }"
-    />
+      @end="
+        (pos) => {
+          t.x = pos.x;
+          t.y = pos.y;
+        }
+      "
+      class="absolute cursor-move rounded-md ring-white/50 hover:ring-2"
+    >
+      <img
+        :src="thing(t.key).src"
+        alt=""
+        class="w-auto"
+        :style="{
+          width: `${thing(t.key)._thing.w}px`,
+          height: `${thing(t.key)._thing.h || thing(t.key)._thing.w}px`,
+          rotate: `${thing(t.key)._thing.rotate}deg`,
+        }"
+      />
+    </UseDraggable>
   </div>
 
   <div class="min-h-0 flex-1 rounded-xl bg-white p-1 shadow-md">

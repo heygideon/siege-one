@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IconLock } from "@tabler/icons-vue";
-import { computed, inject, type Ref } from "vue";
-import type { Category, MeepleState } from "~/lib/meeple";
+import { inject, type Ref } from "vue";
+import { type Category, type MeepleState } from "~/lib/meeple";
 import coin from "~/assets/coin.png";
 
 const {
@@ -30,25 +30,15 @@ const purchaseCategory = () => {
   }
 };
 
-const selectedItems = computed(() => {
-  if (name === "things") {
-    return meeple.value.things.split(",").filter(Boolean);
-  } else {
-    return [meeple.value[name]];
-  }
-});
-
 const setItem = (key: string) => {
   if (name === "things") {
-    const things = new Set(meeple.value.things.split(",").filter(Boolean));
-    if (things.has(key)) {
-      things.delete(key);
+    if (meeple.value.things.find((t) => t.key === key)) {
+      meeple.value.things = meeple.value.things.filter((t) => t.key !== key);
     } else {
-      things.add(key);
+      meeple.value.things.push({ key });
     }
-    meeple.value.things = Array.from(things).join(",");
   } else {
-    meeple.value[name] = key;
+    meeple.value[name] = [{ key }];
   }
 };
 </script>
@@ -62,7 +52,8 @@ const setItem = (key: string) => {
       :class="[
         'size-14 flex-none rounded-md border border-neutral-200 bg-neutral-50',
         pad && 'p-2',
-        selectedItems.includes(key) && 'ring-2 ring-amber-600 ring-offset-1',
+        meeple[name].find((v) => v.key === key) &&
+          'ring-2 ring-amber-600 ring-offset-1',
       ]"
     >
       <img :src="item.src" :alt="item.label" class="size-full object-contain" />

@@ -400,9 +400,14 @@ export const things: Category<ThingItem> = {
   },
 };
 
+type MeepleItemState = {
+  key: string;
+  x?: number;
+  y?: number;
+};
 export type MeepleState = {
-  colour: string;
-  eyes: string;
-  mouth: string;
-  things: string;
+  colour: [MeepleItemState];
+  eyes: [MeepleItemState];
+  mouth: [MeepleItemState];
+  things: MeepleItemState[];
 };

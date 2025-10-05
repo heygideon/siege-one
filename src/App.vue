@@ -10,10 +10,10 @@ const currentUpgrades = ref<Record<string, number>>({});
 provide("upgrades", currentUpgrades);
 
 const meeple = ref<MeepleState>({
-  colour: "blue",
-  eyes: "",
-  mouth: "",
-  things: "",
+  colour: [{ key: "blue" }],
+  eyes: [{ key: "" }],
+  mouth: [{ key: "" }],
+  things: [],
 });
 provide("meeple", meeple);
 
