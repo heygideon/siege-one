@@ -3,7 +3,13 @@ import { IconLock } from "@tabler/icons-vue";
 import { inject, ref, type Ref } from "vue";
 import { type Category, type Item, type MeepleState } from "~/lib/meeple";
 import coin from "~/assets/coin.png";
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/vue";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
 
 const {
   name,
@@ -129,48 +135,67 @@ const setItem = (key: string, item: Item) => {
     </button>
   </div>
 
-  <Dialog
-    :open="dialogOpen"
-    @close="() => (dialogOpen = false)"
-    class="relative z-50"
-  >
-    <div class="fixed inset-0 flex items-center justify-center bg-black/30">
-      <DialogPanel
-        class="flex w-full max-w-md flex-col items-center rounded-xl bg-white p-8 text-center shadow-md"
+  <TransitionRoot :show="dialogOpen" as="template">
+    <Dialog @close="() => (dialogOpen = false)" class="relative z-50">
+      <TransitionChild
+        as="template"
+        enter="duration-300 ease-out-expo"
+        enter-from="opacity-0"
+        enter-to="opacity-100"
+        leave="duration-200 ease-in-expo"
+        leave-from="opacity-100"
+        leave-to="opacity-0"
       >
-        <div
-          class="size-24 rounded-lg border border-neutral-300 bg-neutral-50 p-4"
+        <div class="fixed inset-0 bg-black/50" />
+      </TransitionChild>
+      <div class="fixed inset-0 flex items-center justify-center">
+        <TransitionChild
+          as="template"
+          enter="duration-300 ease-out-expo"
+          enter-from="opacity-0 scale-90"
+          enter-to="opacity-100 scale-100"
+          leave="duration-200 ease-in-expo"
+          leave-from="opacity-100 scale-100"
+          leave-to="opacity-0 scale-90"
         >
-          <img
-            :src="dialogItem?.item.src"
-            :alt="dialogItem?.item.label"
-            class="size-full object-contain"
-          />
-        </div>
-        <DialogTitle class="mt-4 text-xl font-semibold">
-          Buy {{ dialogItem?.item.label }}
-        </DialogTitle>
+          <DialogPanel
+            class="flex w-full max-w-md flex-col items-center rounded-xl bg-white p-8 text-center shadow-md"
+          >
+            <div
+              class="size-24 rounded-lg border border-neutral-300 bg-neutral-50 p-4"
+            >
+              <img
+                :src="dialogItem?.item.src"
+                :alt="dialogItem?.item.label"
+                class="size-full object-contain"
+              />
+            </div>
+            <DialogTitle class="mt-4 text-xl font-semibold">
+              Buy {{ dialogItem?.item.label }}
+            </DialogTitle>
 
-        <button
-          @click="() => purchaseItem(dialogItem!.key, dialogItem!.item)"
-          :disabled="count < (dialogItem!.item.price || 0)"
-          :class="[
-            'group mt-4 flex h-12 items-center rounded-full px-4 text-white shadow-sm transition',
-            count >= (dialogItem!.item.price || 0)
-              ? 'bg-amber-700 bg-gradient-to-br from-amber-600 to-amber-700 hover:scale-105 hover:from-amber-700'
-              : 'bg-neutral-300',
-          ]"
-        >
-          <img
-            :src="coin"
-            alt=""
-            class="mr-2 size-6 group-disabled:grayscale"
-          />
-          <span class="text-lg font-semibold">{{
-            dialogItem!.item.price
-          }}</span>
-        </button>
-      </DialogPanel>
-    </div>
-  </Dialog>
+            <button
+              @click="() => purchaseItem(dialogItem!.key, dialogItem!.item)"
+              :disabled="count < (dialogItem!.item.price || 0)"
+              :class="[
+                'group mt-4 flex h-12 items-center rounded-full px-4 text-white shadow-sm transition',
+                count >= (dialogItem!.item.price || 0)
+                  ? 'bg-amber-700 bg-gradient-to-br from-amber-600 to-amber-700 hover:scale-105 hover:from-amber-700'
+                  : 'bg-neutral-300',
+              ]"
+            >
+              <img
+                :src="coin"
+                alt=""
+                class="mr-2 size-6 group-disabled:grayscale"
+              />
+              <span class="text-lg font-semibold">{{
+                dialogItem!.item.price
+              }}</span>
+            </button>
+          </DialogPanel>
+        </TransitionChild>
+      </div>
+    </Dialog>
+  </TransitionRoot>
 </template>
