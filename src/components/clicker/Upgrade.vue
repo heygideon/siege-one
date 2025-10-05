@@ -76,11 +76,28 @@ const purchase = () => {
     <div
       class="flex h-8 items-center rounded-b-md border border-t-0 border-neutral-200 bg-neutral-50 px-4 text-xs"
     >
-      <p class="mr-1 font-semibold">now:</p>
-      <p v-if="currentLevel" class="text-neutral-600">
-        {{ currentLevel.activeDescription }}
-      </p>
-      <p v-else class="text-neutral-600">nothing :(</p>
+      <template v-if="currentLevel">
+        <p class="mr-0.5 font-semibold">now:</p>
+        <p
+          :key="currentUpgrades[name]"
+          class="purchase-pulse px-0.5 text-neutral-600"
+        >
+          {{ currentLevel.activeDescription }}
+        </p>
+      </template>
+      <p v-else class="text-neutral-400 italic">not purchased</p>
     </div>
   </div>
 </template>
+
+<style scoped>
+.purchase-pulse {
+  animation: purchase-pulse 1s;
+}
+@keyframes purchase-pulse {
+  from {
+    background-color: var(--color-amber-300);
+    color: var(--color-amber-800);
+  }
+}
+</style>
