@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, provide, ref, watch } from "vue";
-import coin from "~/assets/coin.png";
-import { upgrades } from "./lib/upgrades";
+import { onMounted, provide, ref, watch } from "vue";
+import Count from "./components/clicker/Count.vue";
 
 const count = ref(0);
 provide("count", count);
@@ -9,32 +8,12 @@ provide("count", count);
 const currentUpgrades = ref<Record<string, number>>({});
 provide("upgrades", currentUpgrades);
 
-let tickInterval: number;
-
 onMounted(() => {
   const savedCount = localStorage.getItem("count");
   if (savedCount) {
     count.value = Number(savedCount);
   }
-
-  tickInterval = window.setInterval(() => {
-    let newCount = count.value;
-    Object.entries(currentUpgrades.value).forEach(([key, level]) => {
-      const levels = upgrades[key];
-      if (!levels) return;
-      const currentLevel = levels[level - 1];
-      if (!currentLevel) return;
-
-      newCount = currentLevel.tick(newCount);
-    });
-
-    count.value = newCount;
-  }, 1000);
 });
-onUnmounted(() => {
-  clearInterval(tickInterval);
-});
-
 watch(count, (newCount) => {
   localStorage.setItem("count", newCount.toFixed(1));
 });
@@ -61,8 +40,7 @@ watch(count, (newCount) => {
         </RouterLink>
       </div>
       <div class="flex flex-1 items-center justify-end">
-        <img :src="coin" alt="" class="mr-1.5 h-8 drop-shadow-sm" />
-        <span class="text-xl">{{ Math.floor(count) }}</span>
+        <Count />
       </div>
     </nav>
     <RouterView />
