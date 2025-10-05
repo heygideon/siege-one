@@ -2,14 +2,15 @@
 import { onMounted, provide, ref, watch } from "vue";
 import Count from "./components/clicker/Count.vue";
 import type { MeepleState } from "./lib/meeple";
+import { useStorage } from "@vueuse/core";
 
-const count = ref(0);
+const count = useStorage("coins", 0);
 provide("count", count);
 
-const currentUpgrades = ref<Record<string, number>>({});
+const currentUpgrades = useStorage<Record<string, number>>("upgrades", {});
 provide("upgrades", currentUpgrades);
 
-const meeple = ref<MeepleState>({
+const meeple = useStorage<MeepleState>("meeple-state", {
   colour: [{ key: "blue" }],
   eyes: [{ key: "" }],
   mouth: [{ key: "" }],
@@ -17,18 +18,8 @@ const meeple = ref<MeepleState>({
 });
 provide("meeple", meeple);
 
-const unlocked = ref<string[]>([]);
+const unlocked = useStorage<string[]>("meeple-unlocked", []);
 provide("unlocked", unlocked);
-
-onMounted(() => {
-  const savedCount = localStorage.getItem("count");
-  if (savedCount) {
-    count.value = Number(savedCount);
-  }
-});
-watch(count, (newCount) => {
-  localStorage.setItem("count", newCount.toFixed(1));
-});
 </script>
 
 <template>
