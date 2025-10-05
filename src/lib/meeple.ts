@@ -73,6 +73,7 @@ import partyBalloons from "~/assets/things/icons8-party-balloons-96.png";
 import party from "~/assets/things/icons8-party-96.png";
 import headphones from "~/assets/things/icons8-headphones-96.png";
 import book from "~/assets/things/icons8-book-96.png";
+import books from "~/assets/things/icons8-books-96.png";
 import piano from "~/assets/things/icons8-classic-music-96.png";
 import drum from "~/assets/things/icons8-drum-96.png";
 import planet from "~/assets/things/icons8-planet-96.png";
@@ -85,6 +86,22 @@ import beach from "~/assets/things/icons8-beach-96.png";
 import beachUmbrella from "~/assets/things/icons8-beach-umbrella-96.png";
 import sun from "~/assets/things/icons8-sun-96.png";
 import star from "~/assets/things/icons8-star-96.png";
+import cat from "~/assets/things/icons8-cat-96.png";
+import dog from "~/assets/things/icons8-dog-96.png";
+import hatchingChicken from "~/assets/things/icons8-hatching-chicken-96.png";
+import owl from "~/assets/things/icons8-hedwig-96.png";
+import penguin from "~/assets/things/icons8-penguin-96.png";
+import rubberDuck from "~/assets/things/icons8-rubber-duck-96.png";
+
+/*
+src\assets\things\icons8-cat-96.png
+src\assets\things\icons8-dog-96.png
+src\assets\things\icons8-hatching-chicken-96.png
+src\assets\things\icons8-hedwig-96.png
+src\assets\things\icons8-penguin-96.png
+src\assets\things\icons8-rubber-duck-96.png
+src\assets\things\icons8-books-96.png
+*/
 
 export type Item = {
   label: string;
@@ -211,7 +228,7 @@ export const things: Category<ThingItem> = {
       },
     },
     partyHat: {
-      label: "Party Hat",
+      label: "Party hat",
       src: partyHat,
       price: 200,
       _thing: {
@@ -222,7 +239,7 @@ export const things: Category<ThingItem> = {
       },
     },
     santaHat: {
-      label: "Santa Hat",
+      label: "Santa hat",
       src: santaHat,
       price: 200,
       _thing: {
@@ -233,7 +250,7 @@ export const things: Category<ThingItem> = {
       },
     },
     partyBalloons: {
-      label: "Party Balloons",
+      label: "Party balloons",
       src: partyBalloons,
       price: 200,
       _thing: {
@@ -271,6 +288,16 @@ export const things: Category<ThingItem> = {
       _thing: {
         x: 124,
         y: 124,
+        w: 32,
+      },
+    },
+    books: {
+      label: "Books",
+      src: books,
+      price: 200,
+      _thing: {
+        x: 24,
+        y: 120,
         w: 32,
       },
     },
@@ -317,7 +344,7 @@ export const things: Category<ThingItem> = {
       },
     },
     minecraftSword: {
-      label: "Minecraft Sword",
+      label: "Minecraft sword",
       src: minecraftSword,
       price: 200,
       _thing: {
@@ -338,7 +365,7 @@ export const things: Category<ThingItem> = {
       },
     },
     americanFootball: {
-      label: "American Football",
+      label: "American football",
       src: americanFootball,
       price: 200,
       _thing: {
@@ -394,6 +421,66 @@ export const things: Category<ThingItem> = {
       _thing: {
         x: 16,
         y: 16,
+        w: 32,
+      },
+    },
+    cat: {
+      label: "Cat",
+      src: cat,
+      price: 200,
+      _thing: {
+        x: 24,
+        y: 120,
+        w: 32,
+      },
+    },
+    dog: {
+      label: "Dog",
+      src: dog,
+      price: 200,
+      _thing: {
+        x: 24,
+        y: 120,
+        w: 32,
+      },
+    },
+    chick: {
+      label: "Cute little chick",
+      src: hatchingChicken,
+      price: 200,
+      _thing: {
+        x: 24,
+        y: 120,
+        w: 32,
+      },
+    },
+    owl: {
+      label: "Owl",
+      src: owl,
+      price: 200,
+      _thing: {
+        x: 24,
+        y: 120,
+        w: 32,
+      },
+    },
+    penguin: {
+      label: "Penguin",
+      src: penguin,
+      price: 200,
+      _thing: {
+        x: 24,
+        y: 120,
+        w: 32,
+      },
+    },
+    rubberDuck: {
+      label: "Rubber duck",
+      src: rubberDuck,
+      price: 200,
+      _thing: {
+        x: 24,
+        y: 120,
         w: 32,
       },
     },

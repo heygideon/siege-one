@@ -11,6 +11,8 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 
+const VOWELS = ["a", "e", "i", "o", "u"];
+
 const {
   name,
   category,
@@ -171,7 +173,15 @@ const setItem = (key: string, item: Item) => {
               />
             </div>
             <DialogTitle class="mt-4 text-xl font-semibold">
-              Buy {{ dialogItem?.item.label }}
+              Buy
+              {{
+                VOWELS.includes(
+                  dialogItem?.item.label.toLowerCase().charAt(0) || "",
+                )
+                  ? "an"
+                  : "a"
+              }}
+              {{ dialogItem?.item.label.toLowerCase() }}
             </DialogTitle>
 
             <button
