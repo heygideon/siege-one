@@ -74,7 +74,7 @@ const setItem = (key: string, item: Item) => {
       :key="key"
       @click="() => setItem(key, item)"
       :class="[
-        'relative size-14 flex-none rounded-md border border-neutral-200 bg-neutral-50',
+        'group relative size-14 flex-none rounded-md border border-neutral-200 bg-neutral-50',
         pad && 'p-2',
         meeple[name].find((v) => v.key === key) &&
           'ring-2 ring-amber-600 ring-offset-1',
@@ -84,8 +84,10 @@ const setItem = (key: string, item: Item) => {
         :src="item.src"
         :alt="item.label"
         :class="[
-          'size-full object-contain',
-          item.price && !unlocked.includes(`${name}:${key}`) && 'opacity-75',
+          'size-full object-contain transition group-hover:scale-110 group-active:scale-95',
+          item.price &&
+            !unlocked.includes(`${name}:${key}`) &&
+            'opacity-75 group-hover:opacity-100',
         ]"
       />
       <div
