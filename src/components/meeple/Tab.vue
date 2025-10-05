@@ -34,7 +34,7 @@ const currentValue = inject<Ref<string>>("tab");
         currentValue === value ? 'w-auto' : 'w-0',
       ]"
     >
-      <span class="pl-1.5 font-medium">{{ label }}</span>
+      <span class="pl-1.5 font-semibold">{{ label }}</span>
     </div>
   </button>
 </template>
