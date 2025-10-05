@@ -79,30 +79,34 @@ const bankUpgrades: Upgrade[] = [
   {
     name: "Bank 1",
     description: "the rich get richer",
-    activeDescription: "+8 clicks/sec",
+    activeDescription: "1% interest every 10s",
     cost: 900,
-    tick: (v: number) => v + 8,
+    // 1.05^(1/10) ≈ 1.0049
+    tick: (v: number) => v * 1.001,
   },
   {
     name: "Bank 2",
     description: "the rich get even richer",
-    activeDescription: "+12 clicks/sec",
+    activeDescription: "2% interest every 10s",
     cost: 1200,
-    tick: (v: number) => v + 12,
+    // 1.01^(1/10) ≈ 1.002
+    tick: (v: number) => v * 1.002,
   },
   {
     name: "Bank 3",
     description: "the rich get even richerer",
-    activeDescription: "+18 clicks/sec",
+    activeDescription: "5% interest every 10s",
     cost: 1500,
-    tick: (v: number) => v + 18,
+    // 1.05^(1/10) ≈ 1.0049
+    tick: (v: number) => v * 1.0049,
   },
   {
     name: "Bank 4",
     description: "the rich get even richererer",
-    activeDescription: "+24 clicks/sec",
+    activeDescription: "8% interest every 10s",
     cost: 1900,
-    tick: (v: number) => v + 24,
+    // 1.08^(1/10) ≈ 1.0077
+    tick: (v: number) => v * 1.0077,
   },
 ];
 
