@@ -66,12 +66,41 @@ import mouth28 from "~/assets/mouth/28.svg";
 import mouth29 from "~/assets/mouth/29.svg";
 import mouth30 from "~/assets/mouth/30.svg";
 
+import crown from "~/assets/things/icons8-crown-96.png";
+import partyHat from "~/assets/things/icons8-party-hat-96.png";
+import santaHat from "~/assets/things/icons8-santa-hat-96.png";
+import partyBalloons from "~/assets/things/icons8-party-balloons-96.png";
+import party from "~/assets/things/icons8-party-96.png";
+import headphones from "~/assets/things/icons8-headphones-96.png";
+import book from "~/assets/things/icons8-book-96.png";
+import piano from "~/assets/things/icons8-classic-music-96.png";
+import drum from "~/assets/things/icons8-drum-96.png";
+import planet from "~/assets/things/icons8-planet-96.png";
+import camera from "~/assets/things/icons8-camera-96.png";
+import minecraftSword from "~/assets/things/icons8-minecraft-sword-96.png";
+import football from "~/assets/things/icons8-football-96.png";
+import americanFootball from "~/assets/things/icons8-sport-96.png";
+import basketball from "~/assets/things/icons8-basketball-96.png";
+import beach from "~/assets/things/icons8-beach-96.png";
+import beachUmbrella from "~/assets/things/icons8-beach-umbrella-96.png";
+import sun from "~/assets/things/icons8-sun-96.png";
+import star from "~/assets/things/icons8-star-96.png";
+
 export type Item = {
   label: string;
   src: string;
   price?: number;
 };
-export type Category = { price: number; items: Record<string, Item> };
+export type ThingItem = Item & {
+  _thing: {
+    x: number;
+    y: number;
+    w: number;
+    h?: number;
+    rotate?: number;
+  };
+};
+export type Category<I = Item> = { price?: number; items: Record<string, I> };
 
 export const colours: Category = {
   price: 200,
@@ -168,8 +197,212 @@ export const mouths: Category = {
   },
 };
 
+export const things: Category<ThingItem> = {
+  items: {
+    crown: {
+      label: "Crown",
+      src: crown,
+      price: 500,
+      _thing: {
+        x: 84,
+        y: 26,
+        w: 32,
+        rotate: 4,
+      },
+    },
+    partyHat: {
+      label: "Party Hat",
+      src: partyHat,
+      price: 500,
+      _thing: {
+        x: 82,
+        y: 28,
+        w: 32,
+        rotate: 4,
+      },
+    },
+    santaHat: {
+      label: "Santa Hat",
+      src: santaHat,
+      price: 500,
+      _thing: {
+        x: 84,
+        y: 28,
+        w: 32,
+        rotate: 4,
+      },
+    },
+    partyBalloons: {
+      label: "Party Balloons",
+      src: partyBalloons,
+      price: 500,
+      _thing: {
+        x: 116,
+        y: 74,
+        w: 32,
+        rotate: 8,
+      },
+    },
+    party: {
+      label: "Disco",
+      src: party,
+      price: 500,
+      _thing: {
+        x: 84,
+        y: 0,
+        w: 32,
+        rotate: 4,
+      },
+    },
+    headphones: {
+      label: "Headphones",
+      src: headphones,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 124,
+        w: 32,
+      },
+    },
+    book: {
+      label: "Book",
+      src: book,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 124,
+        w: 32,
+      },
+    },
+    piano: {
+      label: "Piano",
+      src: piano,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 124,
+        w: 32,
+      },
+    },
+    drum: {
+      label: "Drum",
+      src: drum,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 124,
+        w: 32,
+      },
+    },
+    planet: {
+      label: "Planet",
+      src: planet,
+      price: 500,
+      _thing: {
+        x: 114,
+        y: 76,
+        w: 32,
+        rotate: 4,
+      },
+    },
+    camera: {
+      label: "Camera",
+      src: camera,
+      price: 500,
+      _thing: {
+        x: 48,
+        y: 80,
+        w: 32,
+        rotate: 4,
+      },
+    },
+    minecraftSword: {
+      label: "Minecraft Sword",
+      src: minecraftSword,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 76,
+        w: 32,
+        rotate: 4,
+      },
+    },
+    football: {
+      label: "Football",
+      src: football,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 124,
+        w: 32,
+      },
+    },
+    americanFootball: {
+      label: "American Football",
+      src: americanFootball,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 124,
+        w: 32,
+      },
+    },
+    basketball: {
+      label: "Basketball",
+      src: basketball,
+      price: 500,
+      _thing: {
+        x: 124,
+        y: 124,
+        w: 32,
+      },
+    },
+    beach: {
+      label: "Beach",
+      src: beach,
+      price: 500,
+      _thing: {
+        x: 24,
+        y: 120,
+        w: 32,
+      },
+    },
+    beachUmbrella: {
+      label: "Beach Umbrella",
+      src: beachUmbrella,
+      price: 500,
+      _thing: {
+        x: 24,
+        y: 120,
+        w: 32,
+      },
+    },
+    sun: {
+      label: "Sun",
+      src: sun,
+      price: 500,
+      _thing: {
+        x: 16,
+        y: 16,
+        w: 32,
+      },
+    },
+    star: {
+      label: "Star",
+      src: star,
+      price: 500,
+      _thing: {
+        x: 16,
+        y: 16,
+        w: 32,
+      },
+    },
+  },
+};
+
 export type MeepleState = {
   colour: string;
   eyes: string;
   mouth: string;
+  things: string;
 };

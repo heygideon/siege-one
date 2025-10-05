@@ -23,9 +23,24 @@ if (!meeple) throw new Error("meeple not provided");
 if (!unlocked) throw new Error("unlocked not provided");
 
 const purchaseCategory = () => {
+  if (!category.price) return;
   if (count.value >= category.price) {
     count.value -= category.price;
     unlocked.value.push(name);
+  }
+};
+
+const setItem = (key: string) => {
+  if (name === "things") {
+    const things = new Set(meeple.value.things.split(",").filter(Boolean));
+    if (things.has(key)) {
+      things.delete(key);
+    } else {
+      things.add(key);
+    }
+    meeple.value.things = Array.from(things).join(",");
+  } else {
+    meeple.value[name] = key;
   }
 };
 </script>
@@ -35,11 +50,11 @@ const purchaseCategory = () => {
     <button
       v-for="[key, item] in Object.entries(category.items)"
       :key="key"
-      @click="meeple[name] = key"
+      @click="() => setItem(key)"
       :class="[
         'size-14 flex-none rounded-md border border-neutral-200 bg-neutral-50',
         pad && 'p-2',
-        meeple[name] === key && 'ring-2 ring-amber-600 ring-offset-1',
+        meeple[name].includes(key) && 'ring-2 ring-amber-600 ring-offset-1',
       ]"
     >
       <img :src="item.src" :alt="item.label" class="size-full object-contain" />
@@ -47,7 +62,7 @@ const purchaseCategory = () => {
   </div>
 
   <div
-    v-if="!unlocked.includes(name)"
+    v-if="false && !unlocked.includes(name) && category.price"
     class="absolute inset-0 flex flex-col items-center bg-white/20 p-8 text-center backdrop-blur-sm"
   >
     <div
@@ -63,10 +78,10 @@ const purchaseCategory = () => {
 
     <button
       @click="purchaseCategory"
-      :disabled="count < category.price"
+      :disabled="count < (category.price || 0)"
       :class="[
         'group mt-4 flex h-12 items-center rounded-full px-4 text-white shadow-sm transition',
-        count >= category.price
+        count >= (category.price || 0)
           ? 'bg-amber-700 bg-gradient-to-br from-amber-600 to-amber-700 hover:scale-105 hover:from-amber-700'
           : 'bg-neutral-300',
       ]"

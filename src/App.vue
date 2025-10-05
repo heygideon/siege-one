@@ -13,6 +13,7 @@ const meeple = ref<MeepleState>({
   colour: "blue",
   eyes: "",
   mouth: "",
+  things: "",
 });
 provide("meeple", meeple);
 
