@@ -42,7 +42,7 @@ const makeUpgrade = () => {
   <div>
     <button
       @click="makeUpgrade"
-      :disabled="!nextLevel || (!!count && count < nextLevel.cost)"
+      :disabled="!nextLevel || !count || count < nextLevel.cost"
       class="group relative w-full rounded-t-md border border-neutral-200 bg-neutral-50 p-4 text-left transition hover:border-neutral-300 hover:bg-neutral-200 disabled:border-neutral-200 disabled:bg-neutral-50"
     >
       <div class="absolute top-2 right-2 flex items-center gap-1">
@@ -50,9 +50,7 @@ const makeUpgrade = () => {
         <span
           :class="[
             'text-xs',
-            count &&
-              nextLevel &&
-              count < nextLevel.cost &&
+            (!count || (nextLevel && count < nextLevel.cost)) &&
               'font-medium text-red-700',
           ]"
         >
