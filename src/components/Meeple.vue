@@ -7,10 +7,11 @@ import {
 } from "@tabler/icons-vue";
 import Tab from "./meeple/Tab.vue";
 
-import { computed, inject, provide, type Ref, ref, useTemplateRef } from "vue";
+import { inject, provide, type Ref, ref, useTemplateRef } from "vue";
 import { colours, eyes, mouths, things, type MeepleState } from "~/lib/meeple";
 import Category from "./meeple/Category.vue";
 import { UseDraggable } from "@vueuse/components";
+import Export from "./meeple/Export.vue";
 
 const meeple = inject<Ref<MeepleState>>("meeple");
 if (!meeple) throw new Error("meeple not provided");
@@ -29,7 +30,7 @@ const thing = (key: string) => things.items[key]!;
 <template>
   <div
     ref="meeple-container"
-    class="relative isolate mx-auto mb-8 size-48 flex-none"
+    class="relative isolate mx-auto size-48 flex-none"
   >
     <div
       class="absolute inset-0 -z-10 rotate-2 rounded-3xl bg-neutral-50/50"
@@ -77,7 +78,9 @@ const thing = (key: string) => things.items[key]!;
     </UseDraggable>
   </div>
 
-  <div class="min-h-0 flex-1 rounded-xl bg-white p-1 shadow-md">
+  <Export />
+
+  <div class="mt-8 min-h-0 flex-1 rounded-xl bg-white p-1 shadow-md">
     <div
       class="flex h-full flex-col overflow-y-auto rounded-lg border-2 border-dashed border-neutral-200"
     >
