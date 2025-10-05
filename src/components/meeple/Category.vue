@@ -87,7 +87,7 @@ const setItem = (key: string, item: Item) => {
           'size-full object-contain transition group-hover:scale-110 group-active:scale-95',
           item.price &&
             !unlocked.includes(`${name}:${key}`) &&
-            'opacity-75 group-hover:opacity-100',
+            'opacity-50 group-hover:opacity-100',
         ]"
       />
       <div
