@@ -3,6 +3,7 @@ type Upgrade = {
   description: string;
   activeDescription: string;
   cost: number;
+  tick: (v: number) => number;
 };
 
 const cursorUpgrades: Upgrade[] = [
@@ -11,24 +12,28 @@ const cursorUpgrades: Upgrade[] = [
     description: "clicks so you don't have to",
     activeDescription: "+0.1 clicks/sec",
     cost: 30,
+    tick: (v: number) => v + 0.1,
   },
   {
     name: "Cursor 2",
     description: "clicks harder so you don't have to",
     activeDescription: "+0.5 clicks/sec",
     cost: 50,
+    tick: (v: number) => v + 0.5,
   },
   {
     name: "Cursor 3",
     description: "clicks even harder so you don't have to",
     activeDescription: "+1 clicks/sec",
     cost: 90,
+    tick: (v: number) => v + 1,
   },
   {
     name: "Cursor 4",
     description: "clicks even harderer so you don't have to",
     activeDescription: "+2 clicks/sec",
     cost: 150,
+    tick: (v: number) => v + 2,
   },
 ];
 
@@ -38,30 +43,35 @@ const orchardUpgrades: Upgrade[] = [
     description: "money grows on trees",
     activeDescription: "+1 clicks/sec",
     cost: 150,
+    tick: (v: number) => v + 1,
   },
   {
     name: "Orchard 2",
     description: "lots of money grows on trees",
     activeDescription: "+2 clicks/sec",
     cost: 250,
+    tick: (v: number) => v + 2,
   },
   {
     name: "Orchard 3",
     description: "money grows on lots of trees",
     activeDescription: "+3 clicks/sec",
     cost: 400,
+    tick: (v: number) => v + 3,
   },
   {
     name: "Orchard 4",
     description: "lots of money grows on lots of trees",
     activeDescription: "+5 clicks/sec",
     cost: 750,
+    tick: (v: number) => v + 5,
   },
   {
     name: "Orchard 5",
     description: "too many trees",
     activeDescription: "+7 clicks/sec",
     cost: 1000,
+    tick: (v: number) => v + 7,
   },
 ];
 
@@ -71,24 +81,28 @@ const bankUpgrades: Upgrade[] = [
     description: "the rich get richer",
     activeDescription: "+8 clicks/sec",
     cost: 900,
+    tick: (v: number) => v + 8,
   },
   {
     name: "Bank 2",
     description: "the rich get even richer",
     activeDescription: "+12 clicks/sec",
     cost: 1200,
+    tick: (v: number) => v + 12,
   },
   {
     name: "Bank 3",
     description: "the rich get even richerer",
     activeDescription: "+18 clicks/sec",
     cost: 1500,
+    tick: (v: number) => v + 18,
   },
   {
     name: "Bank 4",
     description: "the rich get even richererer",
     activeDescription: "+24 clicks/sec",
     cost: 1900,
+    tick: (v: number) => v + 24,
   },
 ];
 
