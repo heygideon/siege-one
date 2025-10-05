@@ -9,6 +9,9 @@ const upgrades = inject<Ref<Record<string, number>>>("upgrades");
 if (!count) throw new Error("count not provided");
 if (!upgrades) throw new Error("upgrades not provided");
 
+const varyPosition = (n: number) => {
+  return n + (Math.random() * 8 - 4);
+};
 const click = async (ev: MouseEvent) => {
   const exponent = upgrades.value.mouse || 0;
   const inc = 2 ** exponent;
@@ -17,8 +20,8 @@ const click = async (ev: MouseEvent) => {
   const span = document.createElement("span");
   span.textContent = `+${inc}`;
   span.className = "button-click-span";
-  span.style.top = ev.clientY + "px";
-  span.style.left = ev.clientX + "px";
+  span.style.top = varyPosition(ev.clientY) + "px";
+  span.style.left = varyPosition(ev.clientX) + "px";
   span.onanimationend = () => {
     span.remove();
   };
