@@ -9,31 +9,30 @@ const { name } = defineProps<{
 const levels = upgrades[name]!;
 
 const count = inject<Ref<number>>("count");
-
 const currentUpgrades = inject<Ref<Record<string, number>>>("upgrades");
-const currentLevel = computed(() => {
-  if (!currentUpgrades) return null;
 
+if (!count) throw new Error("count not provided");
+if (!currentUpgrades) throw new Error("upgrades not provided");
+
+const currentLevel = computed(() => {
   const current = currentUpgrades.value[name] || 0;
   if (current <= 0) return null;
 
   return levels[current - 1];
 });
 const nextLevel = computed(() => {
-  if (!currentUpgrades) return null;
-
   const current = currentUpgrades.value[name] || 0;
   if (current >= levels.length) return null;
 
   return levels[current];
 });
 
-const makeUpgrade = () => {
-  if (!currentUpgrades) return;
-
+const purchase = () => {
   const current = currentUpgrades.value[name] || 0;
   if (current >= levels.length) return;
+  if (!nextLevel.value) return;
 
+  count.value -= nextLevel.value.cost;
   currentUpgrades.value[name] = current + 1;
 };
 </script>
@@ -41,7 +40,7 @@ const makeUpgrade = () => {
 <template>
   <div>
     <button
-      @click="makeUpgrade"
+      @click="purchase"
       :disabled="!nextLevel || !count || count < nextLevel.cost"
       class="group relative w-full rounded-t-md border border-neutral-200 bg-neutral-50 p-4 text-left transition hover:border-neutral-300 hover:bg-neutral-200 disabled:border-neutral-200 disabled:bg-neutral-50"
     >
