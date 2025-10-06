@@ -45,7 +45,7 @@ const click = async (ev: MouseEvent) => {
     <div class="relative">
       <button
         @click="click"
-        class="group grid size-32 place-items-center rounded-full"
+        class="group touch-none grid size-32 place-items-center rounded-full"
       >
         <img
           :src="coin"
