@@ -1,7 +1,11 @@
-import meepleBlue from "~/assets/meeple-blue.png";
-import meepleCyan from "~/assets/meeple-cyan.png";
+import meeplePink from "~/assets/meeple-pink.png";
+import meepleRed from "~/assets/meeple-red.png";
 import meepleOrange from "~/assets/meeple-orange.png";
 import meepleYellow from "~/assets/meeple-yellow.png";
+import meepleGreen from "~/assets/meeple-green.png";
+import meepleBlue from "~/assets/meeple-blue.png";
+import meeplePurple from "~/assets/meeple-purple.png";
+import meepleCyan from "~/assets/meeple-cyan.png";
 
 import eyes1 from "~/assets/eyes/1.svg";
 import eyes2 from "~/assets/eyes/2.svg";
@@ -93,16 +97,6 @@ import owl from "~/assets/things/icons8-hedwig-96.png";
 import penguin from "~/assets/things/icons8-penguin-96.png";
 import rubberDuck from "~/assets/things/icons8-rubber-duck-96.png";
 
-/*
-src\assets\things\icons8-cat-96.png
-src\assets\things\icons8-dog-96.png
-src\assets\things\icons8-hatching-chicken-96.png
-src\assets\things\icons8-hedwig-96.png
-src\assets\things\icons8-penguin-96.png
-src\assets\things\icons8-rubber-duck-96.png
-src\assets\things\icons8-books-96.png
-*/
-
 export type Item = {
   label: string;
   src: string;
@@ -122,13 +116,13 @@ export type Category<I = Item> = { price?: number; items: Record<string, I> };
 export const colours: Category = {
   price: 200,
   items: {
-    blue: {
-      label: "Blue",
-      src: meepleBlue,
+    pink: {
+      label: "Pink",
+      src: meeplePink,
     },
-    cyan: {
-      label: "Cyan",
-      src: meepleCyan,
+    red: {
+      label: "Red",
+      src: meepleRed,
     },
     orange: {
       label: "Orange",
@@ -137,6 +131,22 @@ export const colours: Category = {
     yellow: {
       label: "Yellow",
       src: meepleYellow,
+    },
+    green: {
+      label: "Green",
+      src: meepleGreen,
+    },
+    blue: {
+      label: "Blue",
+      src: meepleBlue,
+    },
+    purple: {
+      label: "Purple",
+      src: meeplePurple,
+    },
+    cyan: {
+      label: "Cyan",
+      src: meepleCyan,
     },
   },
 };
