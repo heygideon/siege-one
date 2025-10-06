@@ -125,6 +125,16 @@ const thing = (key: string) => things.items[key]!;
               >
               🖤
             </p>
+            <p v-if="tab === 'colour'">
+              Meeples by
+              <a
+                href="https://siege.hackclub.com"
+                target="_blank"
+                class="underline-offset-2 hover:text-red-700 hover:underline"
+                >the Siege team</a
+              >
+              ❤️
+            </p>
           </div>
         </div>
 
